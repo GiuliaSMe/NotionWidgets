@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+    <title>Document</title>
+    <style>
+
+html, body {
+    background-color: #191919;
+    margin: 5px;
+}
+
+#timer {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.hours, .minutes {
+  display: inline-block;
+  padding: 20px;
+  width: 100px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.hours {
+  background: #4C3E35;
+  margin-right: 5px;
+}
+
+.minutes {
+  background: #4C3E35;
+}
+
+.numbers {
+  font-family: 'Montserrat', sans-serif;
+  color:  #D49675;
+  font-size: 4em;
+  text-align: center;
+}
+
+.seconds {
+  position: absolute;
+  bottom: 6px;
+  right: 10px;
+  font-family: 'Lato', sans-serif;
+  color: #D49675;
+  font-size: .8em;
+}
+
+.weekday {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  font-family: 'Lato', sans-serif;
+  color: #D49675;
+  font-size: .8em;
+  text-transform: uppercase;
+}
+
+    </style>
+</head>
+<body>
+
+<div id="timer">
+
+    <div class="hours">
+      <div id="weekday" class="weekday"> </div>
+      <div id="hours" class="numbers"> </div>
+    </div>
+    <div class="minutes">
+      <div id="minutes" class="numbers"> </div>
+      <div id="seconds" class="seconds"> </div>
+    </div>
+
+</div>
+
+</body>
+<script>
+
+function pad(n) {
+  return n.toString().padStart(2, '0');
+}
+
+const dias = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+function updateClock() {
+  const now = new Date();
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+
+  document.getElementById("hours").innerHTML = pad(hours);
+  document.getElementById("minutes").innerHTML = pad(minutes);
+  document.getElementById("seconds").innerHTML = pad(seconds);
+  document.getElementById("weekday").innerHTML = dias[now.getDay()];
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+</script>
+</html>
