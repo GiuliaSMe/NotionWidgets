@@ -9,7 +9,9 @@
 
 html, body {
     background-color: #191919;
-    margin: 5px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #timer {
@@ -19,6 +21,14 @@ html, body {
   flex-wrap: wrap;
   justify-content: center;
   gap: clamp(8px, 2vw, 15px);
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hours, .minutes {
@@ -66,20 +76,25 @@ html, body {
 
     </style>
 </head>
+
 <body>
 
-<div id="timer">
+  <div class="wrapper">
 
-    <div class="hours">
-      <div id="weekday" class="weekday"> </div>
-      <div id="hours" class="numbers"> </div>
-    </div>
-    <div class="minutes">
-      <div id="minutes" class="numbers"> </div>
-      <div id="seconds" class="seconds"> </div>
-    </div>
+    <div id="timer">
 
-</div>
+        <div class="hours">
+          <div id="weekday" class="weekday"> </div>
+          <div id="hours" class="numbers"> </div>
+        </div>
+        <div class="minutes">
+          <div id="minutes" class="numbers"> </div>
+          <div id="seconds" class="seconds"> </div>
+        </div>
+
+    </div>
+    
+  </div>
 
 </body>
 <script>
