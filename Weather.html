@@ -1,9 +1,33 @@
+<head>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #191919;
+            overflow: hidden;
+            min-height: 0; 
+        }
+
+        body {
+            width: 100%;
+            background: #191919;
+            height: fit-content;
+        }
+
+        .weatherwidget-io {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+
 <div style="
   width: 100%;
   margin: 0;
   padding: 0;
   border: none;
   overflow: hidden;
+  background: #191919;
 ">
   <a
     class="weatherwidget-io"
@@ -14,6 +38,7 @@
     data-icons="Climacons Animated"
     data-mode="Current"
     data-days="5"
+    data-theme="blank"
     data-textcolor="#d49675"
     data-basecolor="#191919"
   >RECIFE WEATHER</a>
@@ -30,3 +55,17 @@
   }
 }(document,'script','weatherwidget-io-js');
 </script>
+
+<style>
+
+iframe {
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.weatherwidget-io {
+    display: block;
+    width: 100%;
+}
+</style>
