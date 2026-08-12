@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+    <title>Document</title>
+    <style>
+
+html, body {
+    background-color: #191919;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 3vw, 20px);
+}
+
+#timer {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+
+  display: flex;
+  flex-direction: row;
+  gap: clamp(5px, 1vw, 10px);
+}
+
+.minutes, .seconds {
+  width: clamp(65px, 18vw, 100px);
+  height: clamp(65px, 18vw, 100px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: relative;
+  background: #4C3E35;
+}
+
+
+.numbers {
+  font-family: 'Montserrat', sans-serif;
+  color:  #D49675;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  line-height: 1;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3px, 0.5vw, 4px);
+}
+
+.controls button {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.4vw, 2px);
+  font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+  color: #D49675;
+  background: #4C3E35;
+  border: none;
+  border-radius: 5px;
+  padding: clamp(6px, 1.5vw, 8px) clamp(10px, 3vw, 20px);
+  cursor: pointer;
+}
+
+.controls button:hover {
+  opacity: 0.85;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div id="timer">
+
+      <div class="minutes">
+        <div id="minutes" class="numbers">00</div>
+      </div>
+      <div class="seconds">
+        <div id="seconds" class="numbers">00</div>
+      </div>
+
+  </div>
+
+  <div class="controls">
+    <button id="playBtn">▶ Play</button>
+    <button id="pauseBtn">⏸ Pause</button>
+    <button id="resetBtn">↺ Reset</button>
+  </div>
+
+</div>
+
+</body>
+<script>
+
+function pad(n) {
+  return n.toString().padStart(2, '0');
+}
+
+let elapsed = 0; // segundos totais decorridos
+let running = false;
+let intervalId = null;
+
+function render() {
+  const minutes = Math.floor(elapsed / 60);
+  const seconds = elapsed % 60;
+  document.getElementById("minutes").innerHTML = pad(minutes);
+  document.getElementById("seconds").innerHTML = pad(seconds);
+}
+
+function tick() {
+  elapsed++;
+  render();
+}
+
+document.getElementById("playBtn").addEventListener("click", function() {
+  if (running) return;
+  running = true;
+  intervalId = setInterval(tick, 1000);
+});
+
+document.getElementById("pauseBtn").addEventListener("click", function() {
+  running = false;
+  clearInterval(intervalId);
+});
+
+document.getElementById("resetBtn").addEventListener("click", function() {
+  running = false;
+  clearInterval(intervalId);
+  elapsed = 0;
+  render();
+});
+
+render();
+
+</script>
+</html>
