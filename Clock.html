@@ -21,7 +21,7 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(8px, 2vw, 15px);
+  gap: clamp(5px, 1.5vw, 8px);
 }
 
 .wrapper {
@@ -32,11 +32,17 @@ html, body {
 }
 
 .hours, .minutes {
-  display: inline-block;
-  padding: clamp(10px, 3vw, 20px);
-  width: clamp(70px, 20vw, 100px);
+  width: clamp(80px, 18vw, 110px);
+  height: clamp(80px, 18vw, 110px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: clamp(8px, 3vw, 20px);
   border-radius: 5px;
   position: relative;
+  box-sizing: border-box;
 }
 
 .hours {
@@ -50,7 +56,7 @@ html, body {
 .numbers {
   font-family: 'Montserrat', sans-serif;
   color:  #D49675;
-  font-size: clamp(1.5em, 8vw, 4em);
+  font-size: clamp(2em, 6vw, 3em);
   text-align: center;
 }
 
